@@ -1,0 +1,18 @@
+<form id="meuFormulario">
+  <input type="text" name="Nome" placeholder="Seu Nome" required>
+  <input type="email" name="Email" placeholder="Seu Email" required>
+  <textarea name="Mensagem" placeholder="Sua Mensagem"></textarea>
+  <button type="submit">Enviar</button>
+</form>
+
+<script>
+  const scriptURL = 'SUA_URL_DO_APPS_SCRIPT_AQUI';
+  const form = document.getElementById('meuFormulario');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => alert("Dados enviados com sucesso!"))
+      .catch(error => console.error('Erro!', error.message));
+  });
+</script>
